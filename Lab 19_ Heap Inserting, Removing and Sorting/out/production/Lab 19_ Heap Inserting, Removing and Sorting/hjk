@@ -1,0 +1,97 @@
+; ArraySum.asm - sums the elements of an array within the limit
+
+INCLUDE Irvine32.inc
+
+.386
+.model flat, stdcall
+.stack 4096
+ExitProcess proto, dwExitCode:dword
+
+.data
+lowerLimit dword 20
+upperLimit dword 40
+array_1 sdword 10,30,25,15,17,19,40,41,43
+array_2 sdword 10,-30,25,15,-17,55,40,41,43
+buffer db 20 dup(?)
+
+
+.code
+main proc
+
+    ; Initialize sum to zero
+    mov eax, 0
+
+    ; Calculate sum for array_1
+    mov esi, offset array_1
+    mov ecx, lengthof array_1
+
+    calculate_sum:
+        ; Load array element into ebx
+        mov ebx, [esi]
+
+
+        ; Check if element is within the specified range
+        cmp ebx, lowerLimit
+        jl  not_in_range
+        cmp ebx, upperLimit
+        jg  not_in_range
+
+
+        ; Add element to sum
+        add eax, ebx
+
+
+        not_in_range:
+        ; Move to the next array element
+        add esi, 4
+        loop calculate_sum
+
+
+    ; Display the sum for array_1
+    mov
+    mov esi,OFFSET array_1 ; starting OFFSET
+    mov ecx,LENGTHOF array_1 ; number of units
+    mov ebx,TYPE array ; doubleword format
+    call DumMem
+
+    invoke WriteString, offset buffer
+    invoke DumpRegs
+
+
+    mov eax, 0   ; Reset sum for array_2
+
+    ; Calculate sum for array_2
+    mov esi, offset array_2
+    mov ecx, lengthof array_2
+
+
+    calculate_sum_array_2:
+        ; Load array element into ebx
+        mov ebx, [esi]
+
+        ; Check if element is within the specified range
+        cmp ebx, lowerLimit
+        jl  not_in_range_array_2
+        cmp ebx, upperLimit
+        jg  not_in_range_array_2
+
+        ; Add element to sum
+        add eax, ebx
+
+        not_in_range_array_2:
+        ; Move to the next array element
+        add esi, 4
+        loop calculate_sum_array_2
+
+
+    ; Display the sum for array_2
+    invoke WriteString, offset buffer
+    invoke DumpRegs
+
+
+    ; Exit the program
+    invoke ExitProcess, 0
+
+
+main endp
+end main

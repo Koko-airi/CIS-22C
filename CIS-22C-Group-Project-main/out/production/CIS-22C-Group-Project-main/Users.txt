@@ -1,0 +1,54 @@
+Abdullah Mohammad
+amohammad
+iLoveDataStructures
+customer
+
+Hari Prakash
+HariP
+bladeball
+employee
+
+Airi Koko
+airi
+Kokomi
+employee
+
+Sango Koko
+koko
+abc
+customer
+
+Jacob Johnston
+JacobJ
+abc123
+manager
+
+Bob Smith
+bobbob2
+b2b3b0
+customer
+
+Steve Jobs
+sjobs
+@pplePark
+customer
+
+Jeffrey White
+JEFFw
+mynamejeff
+customer
+
+Andrew Brian
+abc
+123
+customer
+
+Jan Jan
+jan
+1
+manager
+
+Test Test
+test
+test
+customer
